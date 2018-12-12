@@ -1,0 +1,140 @@
+// 
+// Stingray Software Extension Classes
+// Copyright (C) 1997 Stingray Software Inc.
+// All Rights Reserved
+// 
+// This source code is only intended as a supplement to the
+// Stingray Extension Class product.
+// See the SEC help files for detailed information
+// regarding using SEC classes.
+// 
+//  Author:			Scot Wingo
+//  Description:	secopt.h - optimization header file.
+//  Created:		Tue Aug 26 20:48:25 1998
+//
+//
+
+#ifndef __SECOPT_H__
+#define __SECOPT_H__
+
+//
+// Check for 32 bit environment
+//
+#ifndef WIN32
+    #error WIN32 is not defined.  This version of Objective Toolkit requires a 32-bit compiler.
+#endif
+
+// ***********************************************************
+// *
+// *  BuildWizard preliminary includes
+// *
+// ***********************************************************
+
+#if !defined(__SEC_BWDEFINES_H)
+#include "BWDef.h"
+#endif
+
+// CImageList, etc.
+#if !defined(__AFXCMN_H__)
+#include <afxcmn.h>
+#endif
+
+// Common Library 
+// If OT is a DLL, then CMN must be a DLL
+
+#ifdef _SECDLL
+	#ifndef _CMNDLL
+		#define _CMNDLL
+	#endif
+#endif // _SECDLL
+
+// MVC Library 
+// If OTPRO is a DLL, then MVC must be a DLL
+
+
+
+// ***********************************************************
+// *
+// *  Common library components
+// *
+// ***********************************************************
+
+#ifndef __CMNALL_H__
+	#include /* */ "CmnAll.h"
+    #include /* */ "cmn_cnt.h"
+#endif
+
+// ***********************************************************
+// *
+// *  Version info
+// *
+// ***********************************************************
+
+#ifndef __SECVER_H__
+#include "secver.h"
+#endif
+
+// ***********************************************************
+// *
+// *  Objective Toolkit Resources
+// *
+// ***********************************************************
+
+#include "secres.h"
+
+// ***********************************************************
+// *
+// *  Objective Toolkit PRO Resources
+// *
+// ***********************************************************
+
+#if defined(OTPRO)
+#include "secres_pro.h"
+#endif
+
+//#if defined(WIN32) && defined(OTPRO)
+
+	// In general, add Pro includes to ProAll.h (see below).
+//	#ifndef __PROPRE_H_
+//	#include "ProPre.h"
+//	#endif
+
+//#endif 
+
+// ***********************************************************
+// *
+// *  Common Classes
+// *
+// ***********************************************************
+#ifdef OT_BLD_COMMON
+
+	#ifndef __SECAUX_H__
+	#include "secaux.h"
+	#endif // __SECAUX_H__
+
+	// dll support
+	#ifndef __SECDLL_H__
+	#include "secdll.h"
+	#endif // __SECDLL_H_
+
+#endif // OT_BLD_COMMON
+
+
+// ***********************************************************
+// *
+// *  Internationalization
+// *
+// ***********************************************************
+
+#ifdef OT_BLD_SLOCALE
+
+	// SECLocale
+	#ifndef __SLOCALE_H__
+	#include "slocale.h"
+	#endif // __SLOCALE_H__
+
+#endif // OT_BLD_SLOCALE
+
+
+#endif // __SECOPT_H__
+
